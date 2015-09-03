@@ -61,11 +61,17 @@ public class Fieldp implements Serializable {
 	 */
 	private void generate() {
 		
-		BufferedImage img = null;
+		BufferedImage image = null;
 		try {
-		    img = ImageIO.read(new File("strawberry.jpg"));
+		    image = ImageIO.read(new File("resources/images2/picture.png"));
 		} catch (IOException e) {
 		}
+		int width = image.getWidth();
+		int height = image.getHeight();
+		int widthOfSection=width/getColumnCount();
+		int heightOfSection=height/getRowCount();
+		System.out.println(widthOfSection);
+		System.out.println(heightOfSection);
 		List<Integer> createRandomNumber = new ArrayList<>();
 		for (int i = 1; i <= getColumnCount() * getRowCount(); i++) {
 			if (i != getColumnCount() * getRowCount()) {
@@ -118,7 +124,7 @@ public class Fieldp implements Serializable {
 		return true;
 	}
 
-	public Image getNumber(int row, int column) {
+	public Image getImage(int row, int column) {
 		return images[row][column];
 	}
 
