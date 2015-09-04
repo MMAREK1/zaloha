@@ -25,6 +25,7 @@ public class kamene extends HttpServlet {
 		out.println("</title>");
 		out.println("</head>");
 		out.println("<body>");
+		out.println("<center>");
 		if (fieldk == null || "new".equals(req.getParameter("move"))) {
 			fieldk = new Fieldk(4, 4);
 			session.setAttribute("fieldk", fieldk);
@@ -68,6 +69,7 @@ public class kamene extends HttpServlet {
 		out.println("</tr>");
 		out.println("</table>");
 		out.println("<a href=\"?move=new\">New Game</a>");
+		out.println("</center>");
 		out.println("</body>");
 		out.println("</html>");
 	}

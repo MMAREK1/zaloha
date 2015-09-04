@@ -26,21 +26,19 @@ public class minesweeper extends HttpServlet {
 		out.println("</title>");
 		out.println("</head>");
 		out.println("<body>");
+		out.println("<center>");
 
 		if (field == null || "new".equals(req.getParameter("game"))) {
-			field = new Field(5, 5, 3);
+			field = new Field(10,10, 15);
 			session.setAttribute("field", field);
 			session.setAttribute("hra", "open");
 		} else {
 			try {
 				int chosenRowI = Integer.parseInt(req.getParameter("row"));
 				int chosenColumnI = Integer.parseInt(req.getParameter("column"));
-				System.out.println(chosenColumnI);
-				System.out.println(chosenRowI);
 				Tile tile = field.getTile(chosenRowI, chosenColumnI);
 				// open tiles if near clicked opened tile is/are marked
 				// tile/s
-				System.out.println(tile.getState());
 				if ("mark".equals(req.getParameter("hra"))) {
 					field.markTile(chosenRowI, chosenColumnI);
 				} else {
@@ -106,6 +104,7 @@ public class minesweeper extends HttpServlet {
 		{
 			out.println("<a href=\"?hra=mark\">Change to Mark</a><br>");
 		}
+		out.println("</center>");
 		out.println("</body>");
 		out.println("</html>");
 

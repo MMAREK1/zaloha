@@ -73,14 +73,16 @@ public class Field {
 			}
 		}
 		Clue clue = (Clue) getTile(chosenRow, chosenColumn);
-		for (int rowOffset = -1; rowOffset <= 1; rowOffset++) {
-			int actRow = chosenRow + rowOffset;
-			if (actRow >= 0 && actRow < getRowCount()) {
-				for (int columnOffset = -1; columnOffset <= 1; columnOffset++) {
-					int actColumn = chosenColumn + columnOffset;
-					if (actColumn >= 0 && actColumn < getColumnCount()) {
-						if (getTile(actRow, actColumn).getState() != Tile.State.OPEN) {
-							openTile(actRow, actColumn);
+		if (countOfMarks == clue.getValue()) {
+			for (int rowOffset = -1; rowOffset <= 1; rowOffset++) {
+				int actRow = chosenRow + rowOffset;
+				if (actRow >= 0 && actRow < getRowCount()) {
+					for (int columnOffset = -1; columnOffset <= 1; columnOffset++) {
+						int actColumn = chosenColumn + columnOffset;
+						if (actColumn >= 0 && actColumn < getColumnCount()) {
+							if (getTile(actRow, actColumn).getState() != Tile.State.OPEN) {
+								openTile(actRow, actColumn);
+							}
 						}
 					}
 				}
